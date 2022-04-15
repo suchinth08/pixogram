@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" xmlns="http://www.w3.org/1999/html">
+  <mat-toolbar-row>
+    <mat-icon>ondemand_video</mat-icon>
+    <span style='color:red;margin-right:0.50em; display:inline-block;'>&nbsp;</span>
+    <span>Pixogram</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon"
+            routerLink="/upload-video"
+            aria-label="Example icon-button with heart icon">
+      <mat-icon>video_call</mat-icon>
+    </button>
+    <button *ngIf="isAuthenticated else noAuth"
+            [matMenuTriggerFor]="menu"
+            mat-icon-button class="example-icon"
+            aria-label="Example icon-button with share icon">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+    <ng-template #noAuth>
+      <button mat-raised-button (click)="login()">Login</button>
+    </ng-template>
+
+  </mat-toolbar-row>
+</mat-toolbar>
